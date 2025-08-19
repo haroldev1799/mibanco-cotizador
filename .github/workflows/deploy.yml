@@ -35,4 +35,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: miusuario/${{ github.repository }}:latest
+          tags: harold1799/${{ github.repository }}:latest
