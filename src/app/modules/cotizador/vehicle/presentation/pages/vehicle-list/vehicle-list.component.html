@@ -1,0 +1,133 @@
+<div class="custom-table">
+    <p-table #dt1 [value]="quotes" class="custom-table__table">
+        <ng-template pTemplate="caption">
+            <div class="custom-header">
+                <div class="custom-header__bar">
+                    <div class="custom-header__search custom-search">
+                        <app-input
+                            class="custom-search__input"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path
+                                    d="M11.6137 11.6132L11.3286 11.8582C10.4657 12.6 9.34696 13.0457 8.12956 13.0457C5.41403 13.0457 3.21289 10.8446 3.21289 8.12907C3.21289 5.41354 5.41403 3.2124 8.12956 3.2124C10.8451 3.2124 13.0462 5.41354 13.0462 8.12907C13.0462 9.34647 12.6005 10.4652 11.8587 11.3281L11.6137 11.6132ZM12.3796 12.3791H12.4712H12.9222L16.5811 16.0454L16.0459 16.5806L12.3796 12.9217V12.4707V12.3791ZM3.87956 8.12907C3.87956 10.4802 5.77842 12.3791 8.12956 12.3791C10.4807 12.3791 12.3796 10.4802 12.3796 8.12907C12.3796 5.77793 10.4807 3.87907 8.12956 3.87907C5.77842 3.87907 3.87956 5.77793 3.87956 8.12907Z"
+                                    fill="#6838C9"
+                                    stroke="#6838C9" />
+                            </svg>
+                        </app-input>
+                        <div class="custom-search__button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path
+                                    d="M13.3137 12.0598H12.6553L12.422 11.8348C13.422 10.6681 13.9387 9.07643 13.6553 7.38477C13.2637 5.0681 11.3303 3.2181 8.99701 2.93477C5.47201 2.50143 2.50534 5.4681 2.93867 8.9931C3.22201 11.3264 5.07201 13.2598 7.38867 13.6514C9.08034 13.9348 10.672 13.4181 11.8387 12.4181L12.0637 12.6514V13.3098L15.6053 16.8514C15.947 17.1931 16.5053 17.1931 16.847 16.8514C17.1887 16.5098 17.1887 15.9514 16.847 15.6098L13.3137 12.0598ZM8.31367 12.0598C6.23867 12.0598 4.56367 10.3848 4.56367 8.30977C4.56367 6.23477 6.23867 4.55977 8.31367 4.55977C10.3887 4.55977 12.0637 6.23477 12.0637 8.30977C12.0637 10.3848 10.3887 12.0598 8.31367 12.0598Z"
+                                    fill="white" />
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- Left header buttons -->
+                    <div class="custom-header__button">
+                        <app-button
+                            [data]="BUTTON_DATA.AGREGAR" (click)="cotizar()" />
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width: 10.625rem">MARCA</th>
+                <th style="min-width: 10.625rem">MODELO</th>
+                <th style="min-width: 12.5rem">AÑO</th>
+                <th style="min-width: 12.5rem">USO</th>
+                <th style="min-width: 12.5rem">EDAD</th>
+                <th style="min-width: 12.5rem">PRIMA TOTAL</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-invoice>
+            <tr>
+                <td>{{ invoice.brand }}</td>
+                <td>{{ invoice.model }}</td>
+                <td>{{ invoice.year }}</td>
+                <td>{{ invoice.useType }}</td>
+                <td>{{ invoice.edad }}</td>
+                <td>{{ invoice.primaTotal }}</td>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="10">
+                    <div class="custom-empty">
+                        <img src="assets/search.svg" alt="search" />
+                        <div class="custom-empty__content">
+                            <span>No se han encontrado resultados en esta búsqueda.</span>
+                            <span>Por favor, intenta otra vez.</span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+</div>
+
+<p-dialog header='Cotizar vehículo' [modal]="true" [(visible)]="showModalForm">
+    <!-- <span class="p-text-secondary block mb-5">Update your information.</span> -->
+    <div class="flex flex-column align-items-start gap-3 mb-3">
+        <div class="flex gap-3">
+            <app-select
+                label="Vehiculo"
+                labelAlternative="Vehiculo"
+                [options]="optionsVehicle"
+                [control]="formGroup.controls['vehicle']"
+                placeholder="Seleccionar"
+                (changeValue)="changeVehicle($event)"
+                size="large"
+            ></app-select>
+            <app-input
+                label="Tipo de uso"
+                labelAlternative="Tipo de uso"
+                [control]="formGroup.controls['useType']"
+                placeholder="Tipo de uso"
+                size="large"
+            ></app-input>
+        </div>
+        <div class="flex gap-3">
+            <app-input-number
+                label="Año"
+                labelAlternative="Año"
+                [min]="2000"
+                [max]="2030"
+                [control]="formGroup.controls['year']"
+                placeholder="Año"
+                size="large"
+            ></app-input-number>
+            <app-input
+                label="Descripcion"
+                labelAlternative="Descripcion"
+                [control]="formGroup.controls['description']"
+                placeholder="Descripcion"
+                size="large"
+            ></app-input>
+        </div>
+        <div class="flex gap-3 justify-content-start">
+            <app-input-number
+                label="Edad"
+                labelAlternative="Edad"
+                [control]="formGroup.controls['edad']"
+                placeholder="Edad"
+                [min]="18"
+                [max]="90"
+                size="large"
+            ></app-input-number>
+        </div>
+        
+        <div class="flex gap-3 justify-content-center w-full">
+            @if(img) {
+                <img [src]="img" height="200" style="border-radius: 20px;">
+            }
+        </div>
+    </div>
+    <div class="flex justify-content-end gap-2">
+        <app-button [data]="BUTTON_DATA.COTIZAR" (click)="saveCotizar()" [disabled]="formGroup.invalid"/>
+    </div>
+</p-dialog>

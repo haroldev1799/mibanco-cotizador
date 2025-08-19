@@ -1,0 +1,27 @@
+<div class="flex flex-column gap-2">
+	@if (!!label) {
+		<app-label [label]="label" [disabled]="control.disabled" [required]="required" [tooltip]="tooltip"></app-label>
+	}
+	<div class="group-input">
+		<p-inputNumber
+			[id]="inputId"
+			[formControl]="control"
+			[min]="min"
+			[max]="max"
+			[maxlength]="maxLength"
+			[useGrouping]="decimal"
+			[minFractionDigits]="minFractionDigits"
+			[maxFractionDigits]="maxFractionDigits"
+			[placeholder]="placeholder"
+			[useGrouping]="useGrouping"
+			autocomplete="off"
+			[ngClass]="{
+				invalid: labelError,
+				'input-small': size === 'small',
+			}"
+		/>
+	</div>
+	@if (labelError) {
+		<app-label-error [labelError]="labelError">{{ labelError }}</app-label-error>
+	}
+</div>

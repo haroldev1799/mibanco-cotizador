@@ -1,0 +1,10 @@
+<p-toast
+    position="bottom-right">
+    <ng-template let-message pTemplate="message">
+        <div class="alert__detail">
+            <img *ngIf="message.severity === AlertType.ERROR" src="/assets/icons/toast/warning-error.svg" alt="error"/>
+            <img *ngIf="message.severity === AlertType.SUCCESS" src="/assets/icons/toast/check-circle.svg" alt="success"/>
+            <span>{{ message.detail }}</span>
+        </div>
+    </ng-template>
+</p-toast>

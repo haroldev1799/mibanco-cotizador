@@ -1,0 +1,21 @@
+span {
+  &.label-input {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    color: var(--dark);
+
+    &.disabled {
+      color: var(--neutral-600);
+    }
+  }
+
+  &.required {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 13px;
+    display: table-caption;
+    margin-left: 3px;
+    color: var(--primary-500);
+  }
+}

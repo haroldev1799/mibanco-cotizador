@@ -1,0 +1,8 @@
+<p-dialog [appendTo]="'body'" [closable]="false" [(visible)]="isLoading" [modal]="true" [style]="{ width: '25rem' }">
+	<ng-template pTemplate="content">
+		<div class="loader">
+			<div class="loader__spinner"></div>
+			<span class="loader__text">Cargando...</span>
+		</div>
+	</ng-template>
+</p-dialog>

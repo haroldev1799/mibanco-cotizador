@@ -1,0 +1,30 @@
+<div class="flex flex-column gap-2">
+	@if (!!label) {
+		<app-label [label]="label" [disabled]="control.disabled" [required]="required"></app-label>
+	}
+	<div>
+		<p-dropdown
+			[options]="options"
+			[id]="inputId"
+			[formControl]="control"
+			[optionLabel]="keyName"
+			[optionValue]="keyValue"
+			[showClear]="isClear"
+			 (onChange)="changeValue.emit($event.value)"
+			[placeholder]="placeholder"
+			class="w-full"
+		/>
+
+		@if (!!subLabel) {
+			<app-label
+				class="sub-label"
+				[label]="subLabel"
+				[disabled]="control.disabled"
+				[required]="required"
+			></app-label>
+		}
+	</div>
+	@if (labelError) {
+		<app-label-error [labelError]="labelError">{{ labelError }}</app-label-error>
+	}
+</div>

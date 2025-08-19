@@ -1,0 +1,75 @@
+.button {
+    user-select: none;
+    border: 1px solid var(--surface-surface-brand-primary);
+    border-radius: 0.5rem;
+    display: flex;
+    height: 2.5rem;
+    padding: 0.625rem 1.25rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: stretch;
+    cursor: pointer;
+    height: 100%;
+
+    &.icon_buton {
+        padding: 10px;
+        img {
+            width: 14px;
+            height: 14px;
+        }
+    }
+
+    &__span {
+        font-size: 0.875rem;
+        font-weight: 500;
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+}
+
+.dark {
+    color: var(--text-text-reverse);
+    background: var(--surface-surface-brand-primary);
+
+    &:not(.disabled):not(.loading):hover {
+        background: var(--primary-500);
+    }
+}
+
+.light {
+    color: var(--text-text-brand-primary);
+    background: var(--surface-surface-reverse);
+    border: 1px solid var(--border-border-brand-primary);
+
+    &:not(.disabled):not(.loading):hover {
+        background: var(--primary-100);
+    }
+}
+
+.lightBlack {
+    color: var(--text-text-neutral-secondary);
+    background: var(--surface-surface-reverse);
+    border: 1px solid var(--icon-icon-neutral-secondary);
+
+    &:not(.disabled):not(.loading):hover {
+        background: var(--neutral-100);
+    }
+}
+
+.cancel {
+    border: none;
+    background: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.5rem;
+}
+
+.disabled {
+    opacity: 0.35;
+    cursor: default;
+}

@@ -1,0 +1,15 @@
+<div class="flex gap-1 align-content-center align-items-center">
+	<div>
+		<span class="label-input" [class.disabled]="disabled">
+			{{ label }}
+			<span class="required" *ngIf="required && !disabled">*</span>
+		</span>
+	</div>
+	<i
+		*ngIf="tooltip"
+		class="pi pi-info-circle"
+		[pTooltip]="tooltip"
+		tooltipPosition="bottom"
+		style="color: slateblue; font-size: 13px"
+	></i>
+</div>

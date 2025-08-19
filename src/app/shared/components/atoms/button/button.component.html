@@ -1,0 +1,17 @@
+<button
+    class="button"
+    [disabled]="disabled || loading"
+    [style]="{
+        width: data.style?.width ?? '100%',
+    }"
+    [type]="type"
+    [ngClass]="{
+        dark: data.type === BUTTON_TYPE.DARK,
+        light: data.type === BUTTON_TYPE.LIGHT,
+        lightBlack: data.type === BUTTON_TYPE.LIGHT_BLACK,
+        cancel: data.type === BUTTON_TYPE.CANCEL,
+        disabled: disabled || loading,
+        icon_buton: !data.text,
+    }">
+    <span class="button__span">{{ data.text }}</span>
+</button>

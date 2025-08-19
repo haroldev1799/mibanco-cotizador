@@ -1,0 +1,62 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<div class="flex flex-column gap-2">
+	@if (!!label) {
+		<app-label
+			[name]="name"
+			[label]="label"
+			[disabled]="control.disabled"
+			[required]="required"
+			[tooltip]="tooltip"
+		></app-label>
+	}
+	<div>
+		<div class="group-input" [class]="classes">
+			@if (!!iconLeft) {
+				@if (isIconSVG) {
+					<img [src]="'assets/svg/inputs' + iconLeft" [alt]="iconLeft" class="icon" />
+				} @else {
+					<i class="icon pi {{ iconLeft }}"></i>
+				}
+			}
+			<input
+				[type]="type"
+				[name]="name"
+				[id]="inputId"
+				[formControl]="control"
+				pInputText
+				appTrimInput
+				[placeholder]="placeholder"
+				[maxLength]="maxLength"
+				[autocomplete]="autocomplete"
+				(keyup.enter)="enterInput()"
+				[ngClass]="{
+					invalid: labelError,
+					icon: iconLeft,
+					'input-small': size === 'small',
+					'icon-right': iconRight,
+				}"
+			/>
+
+			@if (!!iconRight) {
+				@if (isIconSVG) {
+					<img [src]="'assets/svg/inputs' + iconRight" [alt]="iconRight" class="icon icon-right" />
+				} @else {
+					<i class="icon icon-right pi {{ iconRight }} cursor-pointer" role="button" (click)="clickIconRight()"></i>
+				}
+			}
+		</div>
+		@if (!!subLabel) {
+			<app-label
+				class="sub-label"
+				[name]="name"
+				[label]="subLabel"
+				[disabled]="control.disabled"
+				[required]="required"
+				[tooltip]="tooltip"
+			></app-label>
+		}
+	</div>
+	@if (labelError) {
+		<app-label-error [labelError]="labelError">{{ labelError }}</app-label-error>
+	}
+</div>

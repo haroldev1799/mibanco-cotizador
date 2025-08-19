@@ -1,0 +1,25 @@
+import { ValidateKey } from '@core/enums/validators.enum';
+
+export const VALIDATION_MESSAGES: Record<ValidateKey, string> = {
+	[ValidateKey.REQUIRED]: 'es requerido',
+	[ValidateKey.EMAIL]: 'no es un correo válido',
+	[ValidateKey.PHONE]: 'no es un teléfono válido',
+	[ValidateKey.MIN_LENGTH_CUSTOM]: 'no cumple la longitud mínima',
+	[ValidateKey.MAX_LENGTH_CUSTOM]: 'supera la longitud máxima',
+	[ValidateKey.HAS_LENGTH]: 'no cumple la longitud exacta',
+	[ValidateKey.ONLY_DIGITS_AND_LETTERS]: 'solo se permiten letras y números',
+	[ValidateKey.HAS_NOT_UPPER_CASE]: 'debe contener al menos una mayúscula',
+	[ValidateKey.HAS_NOT_LOWER_CASE]: 'debe contener al menos una minúscula',
+	[ValidateKey.HAS_SPACE]: 'no debe contener espacios',
+	[ValidateKey.HAS_NOT_DIGIT]: 'debe contener al menos un número',
+	[ValidateKey.CONFIRM_PASSWORD_ERROR]: 'no coincide con la contraseña',
+	[ValidateKey.HAS_NOT_LENGTH]: 'no cumple el largo requerido',
+	[ValidateKey.CALENDAR_RANGE]: 'está fuera del rango de fechas permitido',
+	[ValidateKey.NOT_EMPTY]: 'no puede estar vacío',
+	[ValidateKey.ONLY_DIGITS]: 'solo se permiten dígitos',
+	[ValidateKey.FLOAT]: 'debe ser un número decimal válido',
+	[ValidateKey.MAX_VALUE]: 'supera el valor máximo permitido',
+	[ValidateKey.INTEGERS_AND_DECIMALS_SUPPORTED]: 'solo se permiten números válidos',
+	[ValidateKey.NOT_NEGATIVE]: 'no se permiten valores negativos',
+	[ValidateKey.PASSWORD_MISMATCH]: 'Las contraseñas no coinciden',
+};

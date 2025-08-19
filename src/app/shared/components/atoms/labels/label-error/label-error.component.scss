@@ -1,0 +1,9 @@
+small {
+  &.label-error {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: var(--primary-400);
+    display: block;
+  }
+}

@@ -1,0 +1,11 @@
+<textarea
+    class="container scroll-y"
+    [ngClass]="{ 'container__error': error }"
+    rows="5"
+    [id]="data.name"
+    [name]="data.name"
+    [value]="data.value"
+    [placeholder]="data.placeholder"
+    (input)="handleChange($event)"
+    (focus)="handleFocus()">
+</textarea>
